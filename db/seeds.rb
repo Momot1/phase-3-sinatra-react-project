@@ -1,5 +1,17 @@
 puts "🌱 Seeding spices..."
 
-# Seed your database here
+Owner.create(name: "Mark Momot")
+
+Car.create(year: "2014", make: "Honda", model: "Accord", owner_id: 1)
+Car.create(year: "2007", make: "Infiniti", model: "G35", owner_id: 1)
+
+Repair.create(name: "Air conditioning replacement", price: 957.51, car_id: 1)
+Repair.create(name: "Starter replacement", price: 271.58, car_id: 1)
+Repair.create(name: "Fender replacement/repaint", price: 330, car_id: 1)
+Repair.create(name: "Coolant reservoir replacement", price: 19.99, car_id: 1)
+
+Repair.create(name: "Power steering leak", price: 292.64, car_id: 2)
+Repair.create(name: "Clutch replacment", price: 987.34, car_id: 2)
+
 
 puts "✅ Done seeding!"
