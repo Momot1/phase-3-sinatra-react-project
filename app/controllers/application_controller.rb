@@ -24,19 +24,19 @@ class ApplicationController < Sinatra::Base
     car.to_json
   end
 
-  post '/repairs' do
-    Car.all.to_json(include: { owner: {only: :name}, repairs: {only: [:id, :name, :price, :created_at]}})
-  end 
+  post '/cars/:id/repairs' do
+    Repair.create(name: params[:name], price: params[:price], car_id: params[:id], miliage: params[:miliage]).to_json
+  end
 
   post '/owners' do 
-
+    Owner.create(name: params[:name]).to_json
   end
 
   private
 
   def get_car_info(car)
     car.to_json(
-      only: [:id, :year, :make, :model],
+      only: [:id, :year, :make, :model, :total_repair_cost],
       include: {owner: {}, repairs: {only: [:id, :name, :price, :created_at]}}
     )
   end

@@ -4,7 +4,7 @@ class Cars < ActiveRecord::Migration[6.1]
       t.integer :year
       t.string :make
       t.string :model
-      t.integer :owner_id 
+      t.integer :owner_id
     end
   end
 end
