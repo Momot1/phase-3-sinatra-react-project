@@ -2,16 +2,12 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   # Add your routes here
-  get "/" do
-    { message: "Good luck with your project!" }.to_json
-  end
-
   get '/cars' do
-    Car.all.to_json(include: { repairs: {only: [:id, :name, :price, :created_at]}})
+    get_car_info(Car.all)
   end
 
   get '/cars/:id' do
-    Car.find(params[:id]).to_json(include: { repairs: {only: [:id, :name, :price, :created_at]}})
+    get_car_info(Car.find(params[:id]))
   end
 
   post '/cars' do
@@ -28,5 +24,21 @@ class ApplicationController < Sinatra::Base
     car.to_json
   end
 
+  post '/repairs' do
+    Car.all.to_json(include: { owner: {only: :name}, repairs: {only: [:id, :name, :price, :created_at]}})
+  end 
+
+  post '/owners' do 
+
+  end
+
+  private
+
+  def get_car_info(car)
+    car.to_json(
+      only: [:id, :year, :make, :model],
+      include: {owner: {}, repairs: {only: [:id, :name, :price, :created_at]}}
+    )
+  end
 
 end
