@@ -6,20 +6,26 @@ class ApplicationController < Sinatra::Base
     { message: "Good luck with your project!" }.to_json
   end
 
-  get '/test' do
-    { message: "YOU GOT IT!" }.to_json
+  get '/cars' do
+    Car.all.to_json(include: { repairs: {only: [:id, :name, :price, :created_at]}})
   end
 
-  post '/test' do
+  get '/cars/:id' do
+    Car.find(params[:id]).to_json(include: { repairs: {only: [:id, :name, :price, :created_at]}})
+  end
+
+  post '/cars' do
     { message: "YOU ADDED IT" }.to_json
   end
 
-  patch '/test/:id' do
+  patch '/cars/:id' do
     { message: "YOU UPDATED IT #{params[:id]}" }.to_json
   end
 
-  delete '/test/:id' do
-    { message: "YOU DELETED IT #{params[:id]}"}.to_json
+  delete '/cars/:id' do
+    car = Car.find(params[:id])
+    car.destroy
+    car.to_json
   end
 
 

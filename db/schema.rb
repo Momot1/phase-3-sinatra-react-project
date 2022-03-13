@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_13_143855) do
+ActiveRecord::Schema.define(version: 2022_03_13_153934) do
 
   create_table "cars", force: :cascade do |t|
     t.integer "year"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2022_03_13_143855) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "car_id"
+    t.integer "miliage"
   end
 
 end

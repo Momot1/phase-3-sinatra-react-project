@@ -13,5 +13,4 @@ Repair.create(name: "Coolant reservoir replacement", price: 19.99, car_id: 1)
 Repair.create(name: "Power steering leak", price: 292.64, car_id: 2)
 Repair.create(name: "Clutch replacment", price: 987.34, car_id: 2)
 
-
 puts "✅ Done seeding!"
