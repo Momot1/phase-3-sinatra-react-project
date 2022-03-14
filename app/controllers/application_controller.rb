@@ -32,6 +32,24 @@ class ApplicationController < Sinatra::Base
     Owner.create(name: params[:name]).to_json
   end
 
+  post '/login' do
+    user = User.find_by(username: params[:username])
+
+    if(user && user.authenticate(params[:password]))
+      {logged_in: true}.to_json
+    else
+      {logged_in: false}.to_json
+    end 
+  end
+
+  post '/logout' do
+
+  end
+
+  get '/logged_in' do
+
+  end
+
   private
 
   def get_car_info(car)
