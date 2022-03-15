@@ -59,6 +59,10 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/users/:id' do
+    User.find(params[:id]).to_json(only: [:id, :username, :first_name, :last_name, :email, :birthday, :group])
+  end
+
   post '/logout' do
 
   end

@@ -13,4 +13,6 @@ Repair.create(name: "Fender replacement/repaint", price: 330, car_id: 1, miliage
 Repair.create(name: "Power steering leak", price: 292.64, car_id: 2, miliage: 131521)
 Repair.create(name: "Clutch replacment", price: 987.34, car_id: 2, miliage: 123454)
 
+User.create(username: "momot", email: "markmomot03@gmail.com", password: "admin", group: "admin", first_name: "Mark", last_name: "Momot", birthday: "08-21-2000")
+
 puts "✅ Done seeding!"
