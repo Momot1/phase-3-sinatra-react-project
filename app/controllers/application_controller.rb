@@ -45,7 +45,11 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/users' do
-    User.create(username: params[:username].downcase, password: params[:password]).to_json
+    if User.find_by(username: params[:username].downcase) == nil
+      User.create(username: params[:username].downcase, password: params[:password]).to_json
+    else
+      {message: "That username is already taken"}.to_json
+    end
   end
 
   post '/logout' do
