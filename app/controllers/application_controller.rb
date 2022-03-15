@@ -44,6 +44,10 @@ class ApplicationController < Sinatra::Base
     end 
   end
 
+  post '/users' do
+    User.create(username: params[:username].downcase, password: params[:password]).to_json
+  end
+
   post '/logout' do
 
   end
