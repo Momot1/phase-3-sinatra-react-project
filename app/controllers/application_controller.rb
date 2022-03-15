@@ -11,11 +11,11 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/cars' do
-    { message: "YOU ADDED IT" }.to_json
+    Car.create(year: params[:year], make: params[:make], model: params[:model], owner_id: params[:owner_id]).to_json
   end
 
   patch '/cars/:id' do
-    { message: "YOU UPDATED IT #{params[:id]}" }.to_json
+    Car.find(params[:id]).update(owner_id: params[:owner_id]).to_json
   end
 
   delete '/cars/:id' do
@@ -30,6 +30,11 @@ class ApplicationController < Sinatra::Base
 
   post '/owners' do 
     Owner.create(name: params[:name]).to_json
+  end
+
+  delete '/owners/:id' do
+    owner = Owner.find(params[:id]).destroy
+    owner.to_json
   end
 
   post '/login' do
