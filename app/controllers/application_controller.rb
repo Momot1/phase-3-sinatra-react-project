@@ -35,10 +35,10 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login' do
-    user = User.find_by(username: params[:username])
+    user = User.find_by(username: params[:username].downcase)
 
     if(user && user.authenticate(params[:password]))
-      {logged_in: true}.to_json
+      {logged_in: true, username: user.username}.to_json
     else
       {logged_in: false}.to_json
     end 
