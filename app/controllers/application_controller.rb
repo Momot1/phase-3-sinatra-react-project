@@ -19,9 +19,7 @@ class ApplicationController < Sinatra::Base
   end
 
   delete '/cars/:id' do
-    car = Car.find(params[:id])
-    car.destroy
-    car.to_json
+    Car.find(params[:id]).destroy.to_json
   end
 
   post '/cars/:id/repairs' do
@@ -33,8 +31,7 @@ class ApplicationController < Sinatra::Base
   end
 
   delete '/owners/:id' do
-    owner = Owner.find(params[:id]).destroy
-    owner.to_json
+    Owner.find(params[:id]).destroy.to_json
   end
 
   post '/login' do
