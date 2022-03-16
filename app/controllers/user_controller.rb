@@ -9,7 +9,7 @@ class UserController < Sinatra::Base
       {logged_in: true, username: user.username}.to_json
     else
       {logged_in: false}.to_json
-    end 
+    end
   end
     
   # If a user creates an account, it checks to see if the username/email is avaliable.
@@ -38,13 +38,5 @@ class UserController < Sinatra::Base
   # Deletes a user from the database
   delete '/users/:id' do
     User.find(params[:id]).destroy.to_json
-  end
-    
-  post '/logout' do
-  
-  end
-    
-  get '/logged_in' do
-    
   end
 end
