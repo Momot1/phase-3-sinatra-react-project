@@ -10,7 +10,11 @@ class CarsController < Sinatra::Base
     end
     
     post '/cars' do
-        Car.create(year: params[:year], make: params[:make], model: params[:model], owner_id: params[:owner_id]).to_json
+        Car.create(year: params[:year], 
+                   make: params[:make], 
+                   model: params[:model], 
+                   owner_id: params[:owner_id]
+                ).to_json
     end
     
     patch '/cars/:id' do
@@ -22,7 +26,11 @@ class CarsController < Sinatra::Base
     end
     
     post '/cars/:id/repairs' do
-        Repair.create(name: params[:name], price: params[:price], car_id: params[:id], miliage: params[:miliage]).to_json
+        Repair.create(name: params[:name], 
+                      price: params[:price], 
+                      car_id: params[:id], 
+                      miliage: params[:miliage]
+                    ).to_json
     end
 
     private
@@ -30,7 +38,8 @@ class CarsController < Sinatra::Base
     def get_car_info(car)
         car.to_json(
             only: [:id, :year, :make, :model, :total_repair_cost],
-            include: {owner: {}, repairs: {only: [:id, :name, :price, :created_at]}}
+            include: {owner: {}, 
+                      repairs: {only: [:id, :name, :price, :created_at]}}
         )
     end
 end
