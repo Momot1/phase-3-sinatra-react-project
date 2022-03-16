@@ -13,12 +13,12 @@ class CarsController < Sinatra::Base
         Car.create(year: params[:year], 
                    make: params[:make], 
                    model: params[:model], 
-                   owner_id: params[:owner_id]
+                   user_id: params[:user_id]
                 ).to_json
     end
     
     patch '/cars/:id' do
-        Car.find(params[:id]).update(owner_id: params[:owner_id]).to_json
+        Car.find(params[:id]).update(user_id: params[:user_id]).to_json
     end
     
     delete '/cars/:id' do
@@ -38,7 +38,7 @@ class CarsController < Sinatra::Base
     def get_car_info(car)
         car.to_json(
             only: [:id, :year, :make, :model, :total_repair_cost],
-            include: {owner: {}, 
+            include: {user: {only: [:id, :username]}, 
                       repairs: {only: [:id, :name, :price, :created_at]}}
         )
     end
