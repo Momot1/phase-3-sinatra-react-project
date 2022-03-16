@@ -1,9 +1,7 @@
 puts "🌱 Seeding spices..."
 
-Owner.create(name: "Mark Momot")
-
-Car.create(year: "2014", make: "Honda", model: "Accord", owner_id: 1)
-Car.create(year: "2007", make: "Infiniti", model: "G35", owner_id: 1)
+Car.create(year: "2014", make: "Honda", model: "Accord", user_id: 1)
+Car.create(year: "2007", make: "Infiniti", model: "G35", user_id: 1)
 
 Repair.create(name: "Air conditioning replacement", price: 957.51, car_id: 1, miliage: 67541)
 Repair.create(name: "Coolant reservoir replacement", price: 19.99, car_id: 1, miliage: 67578)
