@@ -1,4 +1,6 @@
 class Cars < ActiveRecord::Migration[6.1]
+  # Create cars table
+  
   def change
     create_table :cars do |t|
       t.integer :year

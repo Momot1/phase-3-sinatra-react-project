@@ -13,6 +13,7 @@ end
 use Rack::JSONBodyParser
 
 # Our application
+# Uses the other controllers as well
 
 run ApplicationController
 use UserController

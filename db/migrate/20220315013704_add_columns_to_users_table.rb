@@ -1,4 +1,6 @@
 class AddColumnsToUsersTable < ActiveRecord::Migration[6.1]
+  # Add information columns to users table
+  
   def change
     add_column :users, :email, :string
     add_column :users, :first_name, :string
