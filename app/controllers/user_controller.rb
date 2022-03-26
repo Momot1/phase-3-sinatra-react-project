@@ -4,9 +4,9 @@ class UserController < Sinatra::Base
   # Whenever a person tries to login, it checks the username and password provided by the input
   post '/login' do
     user = User.find_by(username: params[:username].downcase)
-    
+     
     if(user && user.authenticate(params[:password]))
-      {logged_in: true, username: user.username}.to_json
+      {logged_in: true, username: user.username, id: user.id}.to_json
     else
       {logged_in: false}.to_json
     end
@@ -19,8 +19,8 @@ class UserController < Sinatra::Base
     if User.find_by(username: params[:username].downcase) == nil && User.find_by(email: params[:email].downcase) == nil
       User.create(username: params[:username].downcase, 
                   password: params[:password], 
-                  first_name: params[:first_name], 
-                  last_name: params[:last_name], 
+                  first_name: params[:firstName], 
+                  last_name: params[:lastName], 
                   email: params[:email], 
                   birthday: params[:birthday], 
                   group: params[:group]
