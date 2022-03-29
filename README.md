@@ -7,6 +7,8 @@ You are a person. You have many cars. Those cars break, a lot. You like to buy c
 To start the server and be able to create a front end of it, you must open your command promt, navigate to the peoject directory, and run the command 
 `bundle exec rake server`
 
+Before you do this, you must run `bundle install` to install any necessary gems.
+
 This command will start the server and you will be able to create various requests to the server
 
 ## Usage
